@@ -1,0 +1,25 @@
+.App{
+  display: grid;
+  padding:1rem;
+  gap:1rem;
+}
+.grid{
+  display: grid;
+  padding:1rem;
+  gap:1rem;
+}
+
+.col-1{
+  grid-template-columns: auto;
+}
+.col-2{
+  grid-template-columns: auto auto;
+}
+
+.fit-content{
+  width: fit-content;
+}
+
+.card-width{
+  min-width: 20rem;
+}

@@ -1,0 +1,7 @@
+.list-style{
+    list-style: none;
+}
+.task-list{
+    display: grid;
+    width: 100%;
+}
