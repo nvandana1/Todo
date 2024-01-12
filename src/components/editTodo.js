@@ -5,7 +5,7 @@ import Button from '@mui/material/Button'
 import '../App.css';
 
 const EditTodo = ({sendTask,task}) => {
-    const [value,setValue] =useState('');
+    const [value,setValue] =useState(task.task);
     const handleChange = (change)=>{
         change.preventDefault();
         setValue(change.target.value);
