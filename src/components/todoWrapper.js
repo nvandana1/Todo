@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TodoForm from "./todoForm";
+import EditTodo from "./editTodo";
 import uuid from "react-uuid";
 import Todo from "./todo";
 import "./todo.css";
@@ -10,19 +11,57 @@ const TodoWrapper = () => {
 
   const appendTaskToList = (task) => {
     if (task === "") return;
-    setTodos((prev) => [...prev, { id: uuid(), task, completed: false }]);
+    setTodos((prev) => [
+      ...prev,
+      { id: uuid(), task, completed: false, isEditing: false },
+    ]);
   };
   useEffect(() => {
     // onChange in angular
     console.log(todos);
   }, [todos]);
+  const taskCompleted = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+  const del = (id) => {
+    setTodos(todos.filter((task) => task.id !== id));
+  };
+  const editTask = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
+      )
+    );
+  };
+  const updateTask = (updatedValue, id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, task: updatedValue ,isEditing:!todo.isEditing} : todo
+      )
+    );
+  };
   return (
     <>
       <TodoForm sendTask={appendTaskToList}></TodoForm>
       <div className="todo-list">
-        {todos.map((task, index) => (
-          <Todo task={task} key={index} className="todo-list"></Todo>
-        ))}
+        {todos.map((task, index) =>
+          task.isEditing ? (
+            <EditTodo task={task} key={index} sendTask={updateTask}></EditTodo>
+          ) : (
+            <Todo
+              task={task}
+              key={index}
+              className="todo-list"
+              taskCompleted={taskCompleted}
+              deleteTask={del}
+              editTask={editTask}
+            ></Todo>
+          )
+        )}
       </div>
     </>
   );

@@ -9,3 +9,7 @@
     padding: 1rem;
     gap: 1rem;
 }
+
+.strike-through{
+    text-decoration: line-through;
+}
