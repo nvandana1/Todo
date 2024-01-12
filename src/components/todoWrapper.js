@@ -46,6 +46,8 @@ const TodoWrapper = () => {
   };
   return (
     <>
+            <h2>Todo app</h2>
+
       <TodoForm sendTask={appendTaskToList}></TodoForm>
       <div className="todo-list">
         {todos.map((task, index) =>
