@@ -24,6 +24,7 @@ const TodoForm = ({sendTask}) => {
           id="taskDescription"
           label="Task"
           value={value}
+          required
           onChange={handleChange}
         variant="filled"
         />

@@ -40,29 +40,41 @@ const TodoWrapper = () => {
   const updateTask = (updatedValue, id) => {
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, task: updatedValue ,isEditing:!todo.isEditing} : todo
+        todo.id === id
+          ? { ...todo, task: updatedValue, isEditing: !todo.isEditing }
+          : todo
       )
     );
   };
   return (
     <>
-            <h2>Todo app</h2>
+      <h2>Todo app</h2>
 
       <TodoForm sendTask={appendTaskToList}></TodoForm>
       <div className="todo-list">
-        {todos.map((task, index) =>
-          task.isEditing ? (
-            <EditTodo task={task} key={index} sendTask={updateTask}></EditTodo>
-          ) : (
-            <Todo
-              task={task}
-              key={index}
-              className="todo-list"
-              taskCompleted={taskCompleted}
-              deleteTask={del}
-              editTask={editTask}
-            ></Todo>
-          )
+        {todos.length > 0 ? (
+          <>
+            {todos.map((task, index) =>
+              task.isEditing ? (
+                <EditTodo
+                  task={task}
+                  key={index}
+                  sendTask={updateTask}
+                ></EditTodo>
+              ) : (
+                <Todo
+                  task={task}
+                  key={index}
+                  className="todo-list"
+                  taskCompleted={taskCompleted}
+                  deleteTask={del}
+                  editTask={editTask}
+                ></Todo>
+              )
+            )}
+          </>
+        ) : (
+          <>Add task</>
         )}
       </div>
     </>
