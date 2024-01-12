@@ -1,6 +1,5 @@
 .App{
   display: grid;
-  padding:1rem;
   gap:1rem;
 }
 .grid{
@@ -15,11 +14,26 @@
 .col-2{
   grid-template-columns: auto auto;
 }
-
+.col-3{
+  grid-template-columns: auto auto auto;
+}
 .fit-content{
   width: fit-content;
 }
 
+.card{
+  min-width: 20rem;
+  width: 30rem;
+  height: fit-content;
+  border: 1px solid rgb(216, 216, 219);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
 .card-width{
   min-width: 20rem;
+}
+
+.cursor{
+  cursor: pointer;
 }

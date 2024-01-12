@@ -1,0 +1,11 @@
+.todo{
+    display: grid;
+    grid-template-columns: auto 2rem 2rem;
+    gap: 1rem;
+}
+
+.todo-list{
+    display: grid;
+    padding: 1rem;
+    gap: 1rem;
+}
