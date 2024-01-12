@@ -6,8 +6,7 @@ import Todo from "./todo";
 import "./todo.css";
 
 const TodoWrapper = () => {
-  const initialTodos = [];
-  const [todos, setTodos] = useState(initialTodos);
+  const [todos, setTodos] = useState();
 
   const appendTaskToList = (task) => {
     if (task === "") return;
