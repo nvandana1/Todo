@@ -21,7 +21,6 @@ const TodoWrapper = () => {
     // onChange in angular
 
     localStorage.setItem("tasks", JSON.stringify(todos));
-    console.log(todos);
   }, [todos]);
   const taskCompleted = (id) => {
     setTodos(
