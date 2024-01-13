@@ -6,7 +6,9 @@ import Todo from "./todo";
 import "./todo.css";
 
 const TodoWrapper = () => {
-  const [todos, setTodos] = useState();
+  const init = JSON.parse(localStorage.getItem("tasks")) || [];
+
+  const [todos, setTodos] = useState(init);
 
   const appendTaskToList = (task) => {
     if (task === "") return;
@@ -17,6 +19,8 @@ const TodoWrapper = () => {
   };
   useEffect(() => {
     // onChange in angular
+
+    localStorage.setItem("tasks", JSON.stringify(todos));
     console.log(todos);
   }, [todos]);
   const taskCompleted = (id) => {
@@ -51,7 +55,7 @@ const TodoWrapper = () => {
 
       <TodoForm sendTask={appendTaskToList}></TodoForm>
       <div className="todo-list">
-        {todos.length > 0 ? (
+        {todos?.length > 0 ? (
           <>
             {todos.map((task, index) =>
               task.isEditing ? (
